@@ -1,12 +1,5 @@
 <?php
 
-function dd(...$values): void
-{
-    foreach ($values as  $value) echo json_encode($value, JSON_PRETTY_PRINT) . PHP_EOL;
-
-    exit;
-}
-
 function value(mixed $value, mixed ...$args) {
     if (is_callable($value)) {
         return $value(...$args);

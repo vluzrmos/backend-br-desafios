@@ -57,8 +57,8 @@ Content-Type: application/json
 
 {
     "name": "Lanchonete",
-    "x": 27,
-    "y": 12
+    "x": 27.00,
+    "y": 12.00
 }
 
 ### 
@@ -126,4 +126,35 @@ Content-Type: application/json
     "y": 2
 }
 
+### 
 
+
+POST {{pointsOfInterestBaseUrl}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Casa",
+    "x": 20,
+    "y": 10
+}
+
+###
+
+POST {{pointsOfInterestBaseUrl}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Casa de Amigo (Visinho)",
+    "x": 21,
+    "y": 11
+}
+
+###
+
+GET {{pointsOfInterestBaseUrl}} HTTP/1.1
+Content-Type: application/json
+
+### 
+
+GET {{pointsOfInterestBaseUrl}}/near?x=20&y=10&dmax=2 HTTP/1.1
+Content-Type: application/json

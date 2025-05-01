@@ -2,10 +2,11 @@
 
 namespace Vluzrmos\BackendBr\Desafios\Models\PointsOfInterest;
 
+use JsonSerializable;
 use MongoDB\Client;
 use MongoDB\Database;
 
-class PointOfInterest
+class PointOfInterest implements JsonSerializable
 {
     protected $collection = 'points-of-interest';
 
@@ -19,12 +20,31 @@ class PointOfInterest
 
     public function save(Database $database)
     {
-        return $database
-            ->getCollection($this->collection)
-            ->insertOne([
+        $collection = $database->getCollection('points-of-interest');
+
+        return $collection->insertOne([
                 'name' => $this->name,
-                'x' => $this->x,
-                'y' => $this->y,
+                'point' => [
+                    "type" => "Point",
+                    "coordinates" => [
+                        $this->x,
+                        $this->y,
+                    ],
+                ]
             ]);
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'name' => $this->name,
+            'x' => $this->x,
+            'y' => $this->y,
+        ];
+    }
+
+    public function __toString(): string
+    {
+        return json_encode($this->jsonSerialize());
     }
 }

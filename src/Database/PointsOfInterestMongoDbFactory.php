@@ -24,7 +24,7 @@ class PointsOfInterestMongoDbFactory
 
     public function createMongoDb(): MongoDb
     {
-        return new MongoDb(
+        $mongo = new MongoDb(
             host: $this->host,
             port: $this->port,
             database: $this->database,
@@ -33,5 +33,12 @@ class PointsOfInterestMongoDbFactory
             authSource: $this->authSource,
             authMechanism: $this->authMechanism,
         );
+
+        $db = $mongo->getDatabase();
+        $collection = $db->getCollection('points-of-interest');
+
+        $collection->createIndex(['point' => '2dsphere']);
+
+        return $mongo;
     }
 }

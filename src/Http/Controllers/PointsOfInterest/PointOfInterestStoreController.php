@@ -45,6 +45,7 @@ class PointOfInterestStoreController
 
         $db = new PointsOfInterestMongoDbFactory()->createMongoDb();
 
+        
         $result = $point->save($db->getDatabase());
 
         return new JsonResponse(

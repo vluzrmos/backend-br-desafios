@@ -29,4 +29,4 @@ docker compose up -d
         - x: float
         - y: float
     - [GET] /points-of-interest
-    - [GET] /points-of-interest/nearby?x=&y=&dmax=
+    - [GET] /points-of-interest/near?x=&y=&dmax=
