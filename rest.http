@@ -18,5 +18,24 @@ Content-Type: application/json
     "location": "SP"
 }
 
+###
 
 # Requests: Desafio Secure Password
+
+POST {{securePasswordBaseUrl}}/validate-password HTTP/1.1
+Content-Type: application/json
+
+{
+    "password": "Ab@12345678"
+}
+
+###
+
+POST {{securePasswordBaseUrl}}/validate-password HTTP/1.1
+Content-Type: application/json
+
+{
+    "password": ""
+}
+
+###

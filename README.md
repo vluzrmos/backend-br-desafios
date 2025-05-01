@@ -1,18 +1,25 @@
-# Desafio Loans
+# Desafios
 
-- [Problema](PROBLEM.md)
+- [Loans](https://github.com/backend-br/desafios/tree/master/loans/PROBLEM.md)
+- [Secure Password](https://github.com/backend-br/desafios/tree/master/secure-password/PROBLEM.md)
 
 # Requisitos do Projeto
 - php 8.x
 
-# Inicializar
+# Instalar dependências
 
 ```bash
-# Instalar dependências
 composer install
 
+# Iniciar servidor
+```bash
 # Iniciar servidor
 cd public
 
 php -S localhost:9000
 ```
+
+# Endpoints:
+
+- Desafio Loans: [POST] /loans/customer-loans
+- Desafio Secure Password: [POST] /secure-password/validate-password
