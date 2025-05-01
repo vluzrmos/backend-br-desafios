@@ -10,6 +10,7 @@
 
 ```bash
 docker compose run app composer install
+```
 
 # Iniciar servidor
 ```bash
