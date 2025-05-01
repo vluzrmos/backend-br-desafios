@@ -1,0 +1,46 @@
+<?php
+
+namespace Vluzrmos\BackendBr\Desafios\Http;
+
+class Response
+{
+    public function __construct(
+        protected mixed $body = null,
+        protected int $status = 200,
+        protected array $headers = [],
+    ) {}
+
+    public function status(int $status): static
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function headers(array $headers): static
+    {
+        foreach ($headers as $key => $value) {
+            $this->headers[$key] = $value;
+        }
+
+        return $this;
+    }
+
+    public function body(mixed $body): static
+    {
+        $this->body = $body;
+
+        return $this;
+    }
+
+    public function send()
+    {
+        foreach ($this->headers as $key => $value) {
+            header("$key: $value");
+        }
+
+        http_response_code($this->status ?: 200);
+
+        echo $this->body;
+    }
+}

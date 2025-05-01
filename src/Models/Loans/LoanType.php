@@ -1,6 +1,6 @@
 <?php
 
-namespace Vluzrmos\BackendBr\Desafios\Loans\Models\Loans;
+namespace Vluzrmos\BackendBr\Desafios\Models\Loans;
 
 enum LoanType: string {
     case PERSONAL="PERSONAL";

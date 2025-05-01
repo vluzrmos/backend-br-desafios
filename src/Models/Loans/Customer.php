@@ -1,5 +1,5 @@
 <?php
-namespace Vluzrmos\BackendBr\Desafios\Loans\Models\Customers;
+namespace Vluzrmos\BackendBr\Desafios\Models\Loans;
 
 class Customer {
     /**

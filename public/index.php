@@ -1,5 +1,7 @@
 <?php
 
+use Vluzrmos\BackendBr\Desafios\Http\Response;
+
 require __DIR__ . '/../vendor/autoload.php';
 
 $routes = require __DIR__ . '/../src/Http/Routes/web.php';
@@ -34,30 +36,11 @@ if (in_array($_SERVER['REQUEST_METHOD'], ['POST', 'DELETE', 'PUT', 'PATCH']) && 
 
 $response = $controller();
 
-if (isset($response['headers'])) {
-    foreach ($response['headers'] as $header => $value) {
-        header("$header: $value");
-    }
-}
+if ($response instanceof Response) {
+    $response->send();
+    exit;
+} 
 
-if (isset($response['status'])) {
-    http_response_code($response['status']);
-}
-
-if (isset($response['body'])) {
-    echo $response['body'];
-}
-
-if (isset($response['json'])) {
-    if (empty($response['headers']['Content-Type'])) {
-        header('Content-Type: application/json');
-    }
-
-    echo json_encode($response['json']);
-} elseif (isset($response['text'])) {
-    header('Content-Type: text/plain');
-    echo $response['text'];
-} elseif (isset($response['html'])) {
-    header('Content-Type: text/html');
-    echo $response['html'];
-}
+error_log('Invalid response type: ' . gettype($response));
+http_response_code(500);
+echo json_encode(['error' => 'Internal Server Error']);

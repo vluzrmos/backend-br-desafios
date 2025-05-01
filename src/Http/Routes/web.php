@@ -1,7 +1,7 @@
 <?php
 
-use Vluzrmos\BackendBr\Desafios\Loans\Http\Controllers\CustomerLoansController;
+use Vluzrmos\BackendBr\Desafios\Http\Controllers\Loans\CustomerLoansController;
 
 return [
-    'POST /customer-loans' => CustomerLoansController::class,
+    'POST /loans/customer-loans' => CustomerLoansController::class,
 ];

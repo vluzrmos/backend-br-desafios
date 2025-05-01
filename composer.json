@@ -5,7 +5,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Vluzrmos\\BackendBr\\Desafios\\Loans\\": "src/"
+            "Vluzrmos\\BackendBr\\Desafios\\": "src/"
         },
         "files": [
             "src/Support/helpers.php"

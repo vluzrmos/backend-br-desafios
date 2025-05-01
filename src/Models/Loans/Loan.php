@@ -1,8 +1,7 @@
 <?php
-namespace Vluzrmos\BackendBr\Desafios\Loans\Models\Loans;
+namespace Vluzrmos\BackendBr\Desafios\Models\Loans;
 
 use Closure;
-use Vluzrmos\BackendBr\Desafios\Loans\Models\Customers\Customer;
 
 class Loan
 {
