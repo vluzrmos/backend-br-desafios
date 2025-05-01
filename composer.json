@@ -1,0 +1,14 @@
+{
+    "name": "vluzrmos/backend-br-desafios-loans",
+    "require": {
+        "php": "~8.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Vluzrmos\\BackendBr\\Desafios\\Loans\\": "src/"
+        },
+        "files": [
+            "src/Support/helpers.php"
+        ]
+    }
+}

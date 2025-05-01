@@ -1,0 +1,16 @@
+#VSCODE Plugin Rest Client: humao.rest-client
+
+# Variables
+@baseUrl = http://localhost:9000
+
+# Requests
+POST {{baseUrl}}/customer-loans HTTP/1.1
+Content-Type: application/json
+
+{
+    "age": 26,
+    "cpf": "275.484.389-23",
+    "name": "Vuxaywua Zukiagou",
+    "income": 7000.00,
+    "location": "SP"
+}
