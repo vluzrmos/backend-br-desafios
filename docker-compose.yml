@@ -7,6 +7,15 @@ services:
       dockerfile: Dockerfile
     user: "${UID:-1000}:${GID:-1000}"
     ports:
-      - "${APP_PORT:-9000}:80"
+      - "${APP_EXTERNAL_PORT:-9000}:80"
     volumes:
       - ./:/app
+  mongodb:
+    image: mongo:7
+    ports:
+      - "${MONGO_EXTERNAL_PORT:-27017}:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=${MONGO_INITDB_ROOT_USERNAME:-desafios}
+      - MONGO_INITDB_ROOT_PASSWORD=${MONGO_INITDB_ROOT_PASSWORD:-desafios}
+    volumes:
+      - ./data:/data/db

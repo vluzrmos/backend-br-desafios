@@ -4,6 +4,7 @@
 @baseUrl = http://localhost:9000
 @loansBaseUrl = {{baseUrl}}/loans
 @securePasswordBaseUrl = {{baseUrl}}/secure-password
+@pointsOfInterestBaseUrl = {{baseUrl}}/points-of-interest
 
 
 # Requests: Desafio Loans
@@ -48,3 +49,81 @@ Content-Type: application/json
 }
 
 ###
+
+# Requests: Desafio Points of Interest
+
+POST {{pointsOfInterestBaseUrl}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Lanchonete",
+    "x": 27,
+    "y": 12
+}
+
+### 
+
+POST {{pointsOfInterestBaseUrl}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Posto",
+    "x": 31,
+    "y": 18
+}
+
+###
+POST {{pointsOfInterestBaseUrl}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Joalheria",
+    "x": 15,
+    "y": 12
+}
+
+###
+
+POST {{pointsOfInterestBaseUrl}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Floricultura",
+    "x": 19,
+    "y": 21
+}
+
+###
+
+POST {{pointsOfInterestBaseUrl}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Pub",
+    "x": 12,
+    "y": 8
+}
+
+###
+
+POST {{pointsOfInterestBaseUrl}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Supermercado",
+    "x": 23,
+    "y": 6
+}
+
+###
+
+POST {{pointsOfInterestBaseUrl}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Churrascaria",
+    "x": 28,
+    "y": 2
+}
+
+

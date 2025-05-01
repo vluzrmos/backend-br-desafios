@@ -1,8 +1,11 @@
 <?php
 
 use Vluzrmos\BackendBr\Desafios\Http\Response;
+use Dotenv\Dotenv;
 
 require __DIR__ . '/../vendor/autoload.php';
+
+Dotenv::createImmutable(__DIR__ . '/../')->load();
 
 $routes = require __DIR__ . '/../src/Http/Routes/web.php';
 $uri = strtok($_SERVER['REQUEST_URI'] ?? '/', '?');
@@ -25,7 +28,7 @@ if (is_string($controller)) {
 
 
 // Parse JSON body
-if (in_array($_SERVER['REQUEST_METHOD'], ['POST', 'DELETE', 'PUT', 'PATCH']) && strpos($_SERVER['CONTENT_TYPE'], 'application/json') === 0) {
+if (in_array($_SERVER['REQUEST_METHOD'], ['POST', 'DELETE', 'PUT', 'PATCH']) && strpos($_SERVER['CONTENT_TYPE'] ?? '', 'application/json') === 0) {
     $data = json_decode(file_get_contents('php://input'), true);
 
     foreach ($data as $key => $value) {

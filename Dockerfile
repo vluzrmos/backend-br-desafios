@@ -4,12 +4,15 @@ FROM php:8.4-cli
 RUN apt-get update && apt-get install -y \
     libzip-dev \
     libzip4 \
+    libssl-dev \
     unzip \
     git \
     curl \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean \
-    && docker-php-ext-install zip
+    && pecl install mongodb \
+    && docker-php-ext-install zip \
+    && docker-php-ext-enable mongodb
 
 COPY --from=composer:2.8 /usr/bin/composer /usr/bin/composer
 RUN chmod +x /usr/bin/composer

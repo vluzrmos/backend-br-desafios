@@ -19,5 +19,14 @@ docker compose up -d
 
 # Endpoints:
 
-- Desafio Loans: [POST] /loans/customer-loans
-- Desafio Secure Password: [POST] /secure-password/validate-password
+- Desafio Loans:
+    - [POST] /loans/customer-loans
+- Desafio Secure Password:
+    - [POST] /secure-password/validate-password
+- Desafio Points of Interest: 
+    - [POST] /points-of-interest
+        - name: string
+        - x: float
+        - y: float
+    - [GET] /points-of-interest
+    - [GET] /points-of-interest/nearby?x=&y=&dmax=
