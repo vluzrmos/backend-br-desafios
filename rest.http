@@ -39,3 +39,12 @@ Content-Type: application/json
 }
 
 ###
+
+POST {{securePasswordBaseUrl}}/validate-password HTTP/1.1
+Content-Type: application/json
+
+{
+    "password": "12@@aaBB"
+}
+
+###
