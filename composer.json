@@ -1,5 +1,7 @@
 {
-    "name": "vluzrmos/backend-br-desafios-loans",
+    "name": "vluzrmos/backend-br-desafios",
+    "description": "Desafios Backend-BR",
+    "version": "1.0.0",
     "require": {
         "php": "~8.1"
     },

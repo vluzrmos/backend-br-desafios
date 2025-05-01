@@ -4,19 +4,16 @@
 - [Secure Password](https://github.com/backend-br/desafios/tree/master/secure-password/PROBLEM.md)
 
 # Requisitos do Projeto
-- php 8.x
+- Docker
 
 # Instalar dependências
 
 ```bash
-composer install
+docker compose run app composer install
 
 # Iniciar servidor
 ```bash
-# Iniciar servidor
-cd public
-
-php -S localhost:9000
+docker compose up -d
 ```
 
 # Endpoints:
