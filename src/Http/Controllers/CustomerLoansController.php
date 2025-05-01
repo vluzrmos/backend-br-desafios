@@ -2,7 +2,7 @@
 namespace Vluzrmos\BackendBr\Desafios\Loans\Http\Controllers;
 
 use Vluzrmos\BackendBr\Desafios\Loans\Models\Customers\Customer;
-use Vluzrmos\BackendBr\Desafios\Loans\Models\Loans\InterestRate;
+use Vluzrmos\BackendBr\Desafios\Loans\Models\Loans\Loan;
 
 class CustomerLoansController
 {
@@ -21,7 +21,7 @@ class CustomerLoansController
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
-            'json' => InterestRate::getCustomerInterests($customer),
+            'json' => Loan::getCustomerInterests($customer),
         ];
 
         return $response;

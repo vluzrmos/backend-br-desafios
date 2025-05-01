@@ -11,6 +11,6 @@ Content-Type: application/json
     "age": 26,
     "cpf": "275.484.389-23",
     "name": "Vuxaywua Zukiagou",
-    "income": 7000.00,
+    "income": 5000.00,
     "location": "SP"
 }
