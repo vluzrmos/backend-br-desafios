@@ -4,6 +4,7 @@ namespace Vluzrmos\BackendBr\Desafios\Http\Controllers\Loans;
 use Vluzrmos\BackendBr\Desafios\Http\JsonResponse;
 use Vluzrmos\BackendBr\Desafios\Models\Loans\Customer;
 use Vluzrmos\BackendBr\Desafios\Models\Loans\Loan;
+use Vluzrmos\BackendBr\Desafios\Services\Loans\LoanService;
 
 class CustomerLoansController
 {
@@ -18,7 +19,7 @@ class CustomerLoansController
         );
 
         $response = new JsonResponse(
-            body: Loan::getCustomerInterests($customer),
+            body: LoanService::getInstance()->getCustomerInterests($customer),
         );
 
         return $response;
