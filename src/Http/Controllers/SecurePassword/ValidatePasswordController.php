@@ -15,7 +15,7 @@ class ValidatePasswordController
         $validator
             ->required()
             ->min(8)
-            ->special(2)
+            ->special(1)
             ->number(1)
             ->upper(1)
             ->lower(1);
