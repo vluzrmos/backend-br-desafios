@@ -15,16 +15,28 @@ class PointOfInterestStoreController
     {
         $errors = [];
 
-        if (!($_REQUEST['name'] ?? null)) {
+        $name = $_REQUEST['name'] ?? null;
+        $x = $_REQUEST['x'] ?? null;
+        $y = $_REQUEST['y'] ?? null;
+
+        if (!$name) {
             $errors['name'] = ['Name is required'];
         }
 
-        if (!is_numeric($_REQUEST['x'] ?? null)) {
+        if (!is_numeric($x)) {
             $errors['x'] = ['X coordinate is required'];
         }
 
-        if (!is_numeric($_REQUEST['y'] ?? null)) {
+        if ($x < -180 || $x > 180) {
+            $errors['x'] = ['X coordinate must be between -180 and 180'];
+        }
+
+        if (!is_numeric($y)) {
             $errors['y'] = ['Y coordinate is required'];
+        }
+
+        if ($y < -90 || $y > 90) {
+            $errors['y'] = ['Y coordinate must be between -90 and 90'];
         }
 
         if ($errors) {
@@ -46,7 +58,20 @@ class PointOfInterestStoreController
         $db = new PointsOfInterestMongoDbFactory()->createMongoDb();
 
         
-        $result = $point->save($db->getDatabase());
+        try {
+            $point->save($db->getDatabase());
+
+        } catch (\Exception $e) {
+            return new JsonResponse(
+                body: [
+                    'status' => 'error',
+                    'errors' => [
+                        'name' => ['Não foi possível salvar o ponto de interesse.'],
+                    ],
+                ],
+                status: ResponseStatus::UNPROCESSABLE_ENTITY->value,
+            );
+        }
 
         return new JsonResponse(
             body: [

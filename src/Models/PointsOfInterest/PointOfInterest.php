@@ -8,8 +8,6 @@ use MongoDB\Database;
 
 class PointOfInterest implements JsonSerializable
 {
-    protected $collection = 'points-of-interest';
-
     public function __construct(
         public readonly string $name,
         public readonly float $x,
@@ -20,7 +18,8 @@ class PointOfInterest implements JsonSerializable
 
     public function save(Database $database)
     {
-        $collection = $database->getCollection('points-of-interest');
+        $schema = PointOfInterestCollectionSchema::instance();
+        $collection = $database->getCollection($schema->getName());
 
         return $collection->insertOne([
                 'name' => $this->name,

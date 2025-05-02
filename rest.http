@@ -151,6 +151,17 @@ Content-Type: application/json
 
 ###
 
+POST {{pointsOfInterestBaseUrl}} HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Invalid",
+    "x": 191,
+    "y": 200
+}
+
+###
+
 GET {{pointsOfInterestBaseUrl}} HTTP/1.1
 Content-Type: application/json
 

@@ -35,12 +35,13 @@ class Response
 
     public function send()
     {
+        $phrase = ResponseStatus::statusReasonPhrase($this->status);
+        header("HTTP/1.1 {$this->status} $phrase");
+
         foreach ($this->headers as $key => $value) {
             header("$key: $value");
         }
-
-        http_response_code($this->status ?: 200);
-
+        
         echo $this->body;
     }
 }

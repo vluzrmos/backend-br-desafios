@@ -2,6 +2,8 @@
 
 namespace Vluzrmos\BackendBr\Desafios\Database;
 
+use Vluzrmos\BackendBr\Desafios\Models\PointsOfInterest\PointOfInterestCollectionSchema;
+
 class PointsOfInterestMongoDbFactory
 {
     public function __construct(
@@ -22,6 +24,13 @@ class PointsOfInterestMongoDbFactory
         $this->authMechanism = $authMechanism ?: env('MONGO_AUTH_MECHANISM', 'SCRAM-SHA-256');
     }
 
+    public function getCollectionSchemas()
+    {
+        return [
+            PointOfInterestCollectionSchema::instance(),
+        ];
+    }
+
     public function createMongoDb(): MongoDb
     {
         $mongo = new MongoDb(
@@ -35,9 +44,26 @@ class PointsOfInterestMongoDbFactory
         );
 
         $db = $mongo->getDatabase();
-        $collection = $db->getCollection('points-of-interest');
 
-        $collection->createIndex(['point' => '2dsphere']);
+        foreach ($this->getCollectionSchemas() as $schema) {
+            $query = iterator_to_array($db->listCollectionNames(
+                ['filter' => ['name' => $schema->getName()]]
+            ));
+
+            if (count($query) > 0) {
+                $db->getCollection($schema->getName())
+                    ->createIndexes($schema->getIndexes());
+                continue;
+            }
+
+            $db->createCollection($schema->getName(), [
+                'validator' => $schema->getValidator(),
+            ]);
+
+            $db->getCollection($schema->getName())
+                ->createIndexes($schema->getIndexes());
+        }
+
 
         return $mongo;
     }
