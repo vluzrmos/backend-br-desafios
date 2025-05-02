@@ -2,6 +2,7 @@
 
 - [Loans](https://github.com/backend-br/desafios/tree/master/loans/PROBLEM.md)
 - [Secure Password](https://github.com/backend-br/desafios/tree/master/secure-password/PROBLEM.md)
+- [Points of Interest](https://github.com/backend-br/desafios/tree/master/points-of-interest/PROBLEM.md)
 
 # Requisitos do Projeto
 - Docker
