@@ -3,6 +3,7 @@
 - [Loans](https://github.com/backend-br/desafios/tree/master/loans/PROBLEM.md)
 - [Secure Password](https://github.com/backend-br/desafios/tree/master/secure-password/PROBLEM.md)
 - [Points of Interest](https://github.com/backend-br/desafios/tree/master/points-of-interest/PROBLEM.md)
+- [Url Shortener](https://github.com/backend-br/desafios/tree/master/url-shortener/PROBLEM.md)
 
 # Requisitos do Projeto
 - Docker
@@ -31,3 +32,7 @@ docker compose up -d
         - y: float
     - [GET] /points-of-interest
     - [GET] /points-of-interest/near?x=&y=&dmax=
+- Desafio Url Shortener:
+    - [POST] /url-shortener/shorten-url
+        - url: string
+    - [GET] /url-shortener/{id}

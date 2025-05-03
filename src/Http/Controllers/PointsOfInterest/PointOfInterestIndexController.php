@@ -13,7 +13,7 @@ class PointOfInterestIndexController
 {
     public function __invoke()
     {
-        $db = new PointsOfInterestMongoDbFactory()->createMongoDb();
+        $db = new PointsOfInterestMongoDbFactory()->connection();
 
         $result = $db->getDatabase()
             ->getCollection('points-of-interest')

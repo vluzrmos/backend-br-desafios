@@ -11,7 +11,33 @@ $routes = require __DIR__ . '/../src/Http/Routes/web.php';
 $uri = strtok($_SERVER['REQUEST_URI'] ?? '/', '?');
 $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
 
-$controller = $routes["$method $uri"] ?? null;
+$controller = null;
+
+// params are in the format {paramname} and should be replaced with a regex
+
+$routeParamPrefix = 'route_param_';
+foreach ($routes as $route => $handler) {
+    $route = preg_replace('/\{(.*?)\}/', '(?P<'.$routeParamPrefix.'$1>.*?[^/])', $route);
+    
+    $matches = [];
+
+    error_log('Route: ' . $route);
+    error_log('Request: ' . $method . ' ' . $uri);
+    error_log('Regex: ' . '#^' . $route . '$#i');
+    if (preg_match('#^' . $route . '$#i', $method . ' ' . $uri, $matches)) {
+        $controller = $handler;
+        
+        foreach($matches as $key => $value) {
+            if (is_string($key) && strpos($key, $routeParamPrefix) === 0) {
+                $paramName = substr($key, strlen($routeParamPrefix));
+                $_REQUEST[$paramName] = $value;
+                $_GET[$paramName] = $value;
+            }
+        }
+
+        break;
+    }
+}
 
 if ($controller === null) {
     http_response_code(404);

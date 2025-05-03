@@ -14,6 +14,13 @@ enum ResponseStatus: int
     case INTERNAL_SERVER_ERROR = 500;
     case SERVICE_UNAVAILABLE = 503;
     case UNPROCESSABLE_ENTITY = 422;
+    case FOUND = 302;
+    case MOVED_PERMANENTLY = 301;
+    case TEMPORARY_REDIRECT = 307;
+    case PERMANENT_REDIRECT = 308;
+    case NOT_MODIFIED = 304;
+    case BAD_GATEWAY = 502;
+    case GATEWAY_TIMEOUT = 504;
 
     public function reasonPhrase(): string
     {
@@ -28,6 +35,14 @@ enum ResponseStatus: int
             self::INTERNAL_SERVER_ERROR => 'Internal Server Error',
             self::SERVICE_UNAVAILABLE => 'Service Unavailable',
             self::UNPROCESSABLE_ENTITY => 'Unprocessable Entity',
+            self::FOUND => 'Found',
+            self::MOVED_PERMANENTLY => 'Moved Permanently',
+            self::TEMPORARY_REDIRECT => 'Temporary Redirect',
+            self::PERMANENT_REDIRECT => 'Permanent Redirect',
+            self::NOT_MODIFIED => 'Not Modified',
+            self::BAD_GATEWAY => 'Bad Gateway',
+            self::GATEWAY_TIMEOUT => 'Gateway Timeout',
+            default => 'Unknown Status Code',
         };
     }
 

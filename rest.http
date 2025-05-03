@@ -6,6 +6,7 @@
 @securePasswordBaseUrl = {{baseUrl}}/secure-password
 @pointsOfInterestBaseUrl = {{baseUrl}}/points-of-interest
 
+@urlShortenerBaseUrl = {{baseUrl}}/url-shortener
 
 # Requests: Desafio Loans
 POST {{loansBaseUrl}}/customer-loans HTTP/1.1
@@ -169,3 +170,19 @@ Content-Type: application/json
 
 GET {{pointsOfInterestBaseUrl}}/near?x=20&y=10&dmax=2 HTTP/1.1
 Content-Type: application/json
+
+
+###
+
+# Requests: Desafio Url Shortener
+
+POST {{urlShortenerBaseUrl}}/shorten-url HTTP/1.1
+Content-Type: application/json
+
+{
+    "url": "https://www.google.com"
+}
+###
+
+GET {{urlShortenerBaseUrl}}/ff28 HTTP/1.1
+

@@ -55,8 +55,7 @@ class PointOfInterestStoreController
             y: $_REQUEST['y'] ?? 0.0,
         );
 
-        $db = new PointsOfInterestMongoDbFactory()->createMongoDb();
-
+        $db = new PointsOfInterestMongoDbFactory()->connection();
         
         try {
             $point->save($db->getDatabase());
