@@ -39,6 +39,7 @@ class UrlShortenerStoreController
         return new JsonResponse(
             body: [
                 'url' => $url->fullShortenUrl(),
+                'shorten_id' => $url->shorten,
             ],
             status: ResponseStatus::CREATED->value,
         );
