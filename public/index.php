@@ -20,10 +20,7 @@ foreach ($routes as $route => $handler) {
     $route = preg_replace('/\{(.*?)\}/', '(?P<'.$routeParamPrefix.'$1>.*?[^/])', $route);
     
     $matches = [];
-
-    error_log('Route: ' . $route);
-    error_log('Request: ' . $method . ' ' . $uri);
-    error_log('Regex: ' . '#^' . $route . '$#i');
+    
     if (preg_match('#^' . $route . '$#i', $method . ' ' . $uri, $matches)) {
         $controller = $handler;
         
